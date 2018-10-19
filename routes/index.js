@@ -1,4 +1,4 @@
 module.exports = app => {
-  //app.use("/station", require("./station"));
-  app.use("/trains", require("./trains/index"));
+  app.use("/stations", require("./stations"));
+  app.use("/trains", require("./trains"));
 };
