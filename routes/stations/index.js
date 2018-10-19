@@ -18,11 +18,14 @@ const serializeBody = (body, query) => {
 router.get("/", async (req, res) => {
   try {
     const query = req.query;
-    let url = getURL(query.q);
+    const q = query.q.toUpperCase();
+    let url = getURL(q);
     request(url, async (error, response, body) => {
       try {
-        const data = await serializeBody(JSON.parse(body), query.q);
-        res.json(data);
+        const data = await serializeBody(JSON.parse(body), q);
+        res.setHeader("Content-Type", "application/json");
+        res.setHeader("Access-Control-Allow-Origin", "*");
+        res.send(JSON.stringify(data));
       } catch (e) {
         res.json({
           error: e
