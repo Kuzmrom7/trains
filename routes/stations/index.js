@@ -23,10 +23,9 @@ router.get("/", async (req, res) => {
     request(url, async (error, response, body) => {
       try {
         const data = await serializeBody(JSON.parse(body), q);
-        res.setHeader("Content-Type", "application/json");
-        res.setHeader("Access-Control-Allow-Origin", "*");
         res.send(JSON.stringify(data));
       } catch (e) {
+        res.sendStatus(400);
         res.json({
           error: e
         });

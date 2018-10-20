@@ -17,8 +17,6 @@ router.get("/", (req, res) => {
         const rid = bodyParser.rid;
         await timeout(1000);
         request(setupURL(rid, cookie), async (error, resp, body) => {
-          res.setHeader("Content-Type", "application/json");
-          res.setHeader("Access-Control-Allow-Origin", "*");
           res.send(JSON.stringify(JSON.parse(body)));
         });
       } catch (e) {
