@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 
 router.get("/", (req, res) => {
   const query = req.query;
+
   request(
     getRid(query.from, query.to, query.date),
     async (error, response, bodyRid) => {

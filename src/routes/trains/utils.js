@@ -3,6 +3,7 @@ const getRid = (from, to, date) => {
     from
   )}&dt0=${encodeURI(date)}&code1=${encodeURI(to)}`;
 };
+
 const getTrains = rid => {
   return `http://pass.rzd.ru/timetable/public/ru?STRUCTURE_ID=735&layer_id=5371&rid=${rid}`;
 };
